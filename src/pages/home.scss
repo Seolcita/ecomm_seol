@@ -14,12 +14,10 @@
   }
 
   &__container {
-    // background-color: aquamarine;
-
     @include center-column;
 
-    width: 97%;
     margin: 0 auto;
+    padding: 0 1rem;
     max-width: 150rem;
   }
 
@@ -27,6 +25,6 @@
     width: 100%;
     display: flex;
     z-index: 1;
-    margin: 0 0.5rem;
+    // margin: 0 0.5rem;
   }
 }

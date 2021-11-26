@@ -1,0 +1,26 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.checkout {
+  margin: 3rem auto;
+  height: max-content;
+
+  display: flex;
+  @include body-padding;
+
+  &__left {
+    flex: 1;
+  }
+
+  &__right {
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-right: 4rem;
+    padding: 1rem;
+    border-bottom: 1px solid $color-grey-medium;
+  }
+}

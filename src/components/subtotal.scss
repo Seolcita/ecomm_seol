@@ -1,0 +1,29 @@
+/** @format */
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.subtotal {
+  width: 30rem;
+  height: 20rem;
+  padding: 3rem 5rem;
+  background-color: $color-white;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+
+  @include center-column;
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  &__amount {
+    font-size: 2rem;
+  }
+
+  &__btn {
+    width: 100%;
+    margin-top: 1.7rem;
+    padding: 0.5rem;
+  }
+}
