@@ -1,0 +1,27 @@
+/** @format */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
+@import "variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: $color-grey-light;
+}
+
+input {
+  padding: 0.7rem 1.5rem;
+
+  &:focus {
+    outline: none;
+  }
+}
