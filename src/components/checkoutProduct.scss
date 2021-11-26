@@ -1,0 +1,14 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.checkoutProduct {
+  width: 100%;
+  height: 30rem;
+
+  &__img {
+    width: 15rem;
+    height: 15rem;
+  }
+}

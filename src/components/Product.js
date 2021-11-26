@@ -1,15 +1,30 @@
 /** @format */
 
-import React from "react";
+import React from 'react';
+import { useStateValue } from '../StateProvider';
 
 // CSS
-import "./product.scss";
-
-// Images
-import Soap from "../images/soap.png";
+import './product.scss';
 
 function Product(props) {
-  const { title, price, image, rating } = props;
+  const { id, title, price, image, rating } = props;
+  const [{ basket }, dispatch] = useStateValue();
+  console.log('BASKET: ', basket);
+
+  const addToBasket = () => {
+    // Dispatch the item into the data layer
+    dispatch({
+      type: 'ADD_TO_BASKET',
+      item: {
+        id: id,
+        title: title,
+        image: image,
+        price: price,
+        rating: rating,
+      },
+    });
+  };
+
   return (
     <div className='product'>
       <div className='product__info'>
@@ -30,7 +45,9 @@ function Product(props) {
       <div className='product__img'>
         <img src={image} />
       </div>
-      <button className='product__btn'>Add to cart</button>
+      <button className='product__btn' onClick={addToBasket}>
+        Add to cart
+      </button>
     </div>
   );
 }
