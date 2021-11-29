@@ -1,7 +1,7 @@
 /** @format */
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
-@import "variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+@import 'variables.scss';
 
 * {
   margin: 0;
@@ -14,7 +14,7 @@ html {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: $color-grey-light;
 }
 
@@ -28,6 +28,7 @@ input {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 
   &:visited,
   &:link {
@@ -37,4 +38,8 @@ a {
 
 li {
   list-style-type: none;
+}
+
+button {
+  cursor: pointer;
 }

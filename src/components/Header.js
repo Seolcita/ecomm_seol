@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../firebase';
 
 // CSS
 import { Search, ShoppingBasket } from '@mui/icons-material';
@@ -9,7 +10,7 @@ import './header.scss';
 import { useStateValue } from '../StateProvider';
 
 function Header() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
 
   return (
     <div className='header'>
@@ -24,9 +25,21 @@ function Header() {
         </button>
       </div>
       <div className='header__nav'>
-        <div className='header__option'>Sign In</div>
+        {user ? (
+          <div className='header__option'>
+            <p>Hello, {user.email.split('@')[0]}</p>
+            <p className='header__logout' onClick={() => auth.signOut()}>
+              Logout
+            </p>
+          </div>
+        ) : (
+          <Link to='/login'>
+            <div className='header__option'>Sign In</div>
+          </Link>
+        )}
+
         <div className='header__option'>Orders</div>
-        {/* <div className='header__option'>Shopping Cart</div> */}
+
         <Link to='/checkout'>
           <div className='header__option--cart'>
             <ShoppingBasket className='header__icon' />

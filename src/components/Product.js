@@ -9,7 +9,7 @@ import './product.scss';
 function Product(props) {
   const { id, title, price, image, rating } = props;
   const [{ basket }, dispatch] = useStateValue();
-  console.log('BASKET: ', basket);
+  // console.log('BASKET: ', basket);
 
   const addToBasket = () => {
     // Dispatch the item into the data layer
@@ -34,7 +34,7 @@ function Product(props) {
           <strong>{price}</strong>
         </p>
         <div className='product__rating'>
-          {console.log(rating)}
+          {/* {console.log(rating)} */}
           {Array(rating)
             .fill()
             .map((_, i) => (

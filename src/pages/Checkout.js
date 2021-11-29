@@ -9,14 +9,14 @@ import CheckoutProduct from '../components/CheckoutProduct';
 import './checkout.scss';
 
 function Checkout() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
 
   return (
     <div className='checkout'>
       <div className='checkout__left'>
+        <h3 className='checkout__greeting'>Hello, {user?.email}</h3>
         <h2 className='checkout__title'>Your Shopping Basket</h2>
         {basket.map(item => {
-          console.log('ITEM', item);
           const { id, title, image, rating, price } = item;
 
           return (
@@ -26,11 +26,6 @@ function Checkout() {
               image={image}
               rating={rating}
               price={price}
-              // id={item.id}
-              // title={item.title}
-              // image={item.image}
-              // rating={item.rating}
-              // price={item.price}
             />
           );
         })}

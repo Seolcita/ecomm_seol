@@ -1,13 +1,22 @@
 /** @format */
 
 import React from 'react';
+import { useStateValue } from '../StateProvider';
 
 // CSS
 import './checkoutProduct.scss';
 
 function CheckoutProduct(props) {
   const { id, title, price, rating, image } = props;
-  console.log('*****', props);
+  const [{ basket }, dispatch] = useStateValue();
+
+  const removeFromBasket = () => {
+    dispatch({
+      type: 'REMOVE_FROM_BASKET',
+      id: id,
+    });
+  };
+
   return (
     <div className='checkoutProduct' key={id}>
       <img className='checkoutProduct__img' src={image} />
@@ -18,10 +27,13 @@ function CheckoutProduct(props) {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <p>⭐️</p>
+              <p>⭐️ </p>
             ))}
         </div>
-        <button> Remove the item</button>
+        <button className='checkoutProduct__btn' onClick={removeFromBasket}>
+          {' '}
+          Remove the item
+        </button>
       </div>
     </div>
   );
