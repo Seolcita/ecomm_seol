@@ -1,0 +1,54 @@
+/** @format */
+
+@import 'variables.scss';
+@import 'mixins.scss';
+
+.payment {
+  width: 100%;
+
+  &__container {
+    font-size: 2rem;
+    margin: 3rem auto;
+    @include center-column;
+  }
+
+  &__title {
+    &--main {
+      margin-bottom: 3rem;
+
+      small {
+        font-weight: 400;
+      }
+    }
+
+    &--sub {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__wrap {
+    width: 100%;
+    display: flex;
+
+    @include body-padding;
+  }
+  &__left {
+    flex: 1;
+    background-color: pink;
+  }
+
+  &__right {
+    background-color: skyblue;
+    width: 60rem;
+    padding: 1rem;
+
+    p {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__summary {
+    // margin-top: 3rem;
+  }
+}
