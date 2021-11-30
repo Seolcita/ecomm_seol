@@ -37,9 +37,9 @@ function Header() {
             <div className='header__option'>Sign In</div>
           </Link>
         )}
-
-        <div className='header__option'>Orders</div>
-
+        <Link to='/orders'>
+          <div className='header__option'>Orders</div>
+        </Link>
         <Link to='/checkout'>
           <div className='header__option--cart'>
             <ShoppingBasket className='header__icon' />

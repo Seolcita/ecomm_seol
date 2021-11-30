@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import Payment from './pages/Payment';
+import Orders from './pages/Orders';
 
 // CSS
 import './app.scss';
@@ -49,6 +50,7 @@ const App = () => {
         <Route exact path='/login' component={Login} />
         <Route exact path='/' component={Home} />
         <Route exact path='/checkout' component={Checkout} />
+        <Route exact path='/orders' component={Orders} />
         <Elements stripe={promise}>
           <Route exact path='/payment' component={Payment} />
         </Elements>

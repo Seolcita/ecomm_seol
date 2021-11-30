@@ -1,11 +1,12 @@
 /** @format */
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useStateValue } from '../StateProvider';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
 import { getBasketTotal } from '../reducer';
+import axios from '../axios';
 
 import CheckoutProduct from '../components/CheckoutProduct';
 
@@ -18,12 +19,62 @@ function Payment() {
   const [disabled, setDisabled] = useState(true);
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState('');
+  const [clientSecret, setClientSecret] = useState(true);
+
+  const history = useHistory();
 
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  useEffect(() => {
+    const getClientSecret = async () => {
+      // response from Stripe
+      const response = await axios({
+        method: 'post',
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
+      });
+      setClientSecret(response.data.clientSecret);
+    };
+
+    getClientSecret();
+  }, [basket]);
+
+  console.log('THE SECRET IS >>>>', clientSecret);
+
+  const handleSubmit = async event => {
+    // do all the fancy stripe stuff...
+    event.preventDefault();
+    setProcessing(true);
+
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      })
+      .then(({ paymentIntent }) => {
+        // paymentIntent = payment confirmation
+
+        // db.collection('users')
+        //   .doc(user?.uid)
+        //   .collection('orders')
+        //   .doc(paymentIntent.id)
+        //   .set({
+        //     basket: basket,
+        //     amount: paymentIntent.amount,
+        //     created: paymentIntent.created,
+        //   });
+
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+
+        dispatch({
+          type: 'EMPTY_BASKET',
+        });
+
+        history.replace('/orders');
+      });
   };
 
   const handleChange = e => {
