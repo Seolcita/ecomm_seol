@@ -4,43 +4,73 @@
 @import "mixins.scss";
 
 .product {
-  margin: 1rem;
-  padding: 2rem;
-  width: 100%;
-  min-width: 10rem;
+  margin: 3rem 1.5rem;
+  padding-bottom: 2rem;
+  width: 27rem;
+  // width: 35rem;
   max-height: 40rem;
-  background-color: pink;
+  background-color: $color-white;
+  border-radius: 0.5rem;
+  box-shadow: 0.5rem 0.5rem 1rem rgb(208, 208, 208);
   z-index: 1;
+  transition: box-shadow 0.7s;
 
   @include center-column;
-  justify-content: flex-end;
+
+  &__info {
+    padding: 2rem 0;
+    @include center-column;
+  }
 
   &__title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
   }
 
   &__price {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 1rem;
   }
 
   &__rating {
     @include center;
+    font-size: 1.5rem;
     justify-content: start;
   }
 
   &__img {
     img {
       width: 100%;
-      max-height: 20rem;
-      object-fit: contain;
-      margin: 2rem auto;
+      height: 17rem;
+      border-radius: 0.5rem 0.5rem 0 0;
     }
   }
 
   &__btn {
     border: none;
-    padding: 0.7rem 1.5rem;
+    width: 90%;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-color: $color-orange;
+    border-radius: 0.5rem;
+
+    @include center;
+
+    &:hover {
+      background-color: darkgoldenrod;
+    }
+  }
+
+  &__icon {
+    width: 1.7rem !important;
+    height: 1.7rem !important;
+    color: brown;
+    margin-right: 1rem;
+  }
+
+  &:hover {
+    box-shadow: 1rem 1rem 0.5rem rgb(154, 154, 154);
   }
 }
