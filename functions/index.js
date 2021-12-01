@@ -1,10 +1,10 @@
 /** @format */
 
-const functions = require('firebase-functions');
-const express = require('express');
-const cors = require('cors');
-const stripe = require('stripe')(
-  'sk_test_51K1JOkEtRHwOqOR019DJvp9uDzMeN6zbZy9K93qkhhDlr3J7E1jI8BpD6cJEOKiWzyBxLTKvh0pB9BAURgOEc9g800cmyeTsoM'
+const functions = require("firebase-functions");
+const express = require("express");
+const cors = require("cors");
+const stripe = require("stripe")(
+  "sk_test_51K1JOkEtRHwOqOR019DJvp9uDzMeN6zbZy9K93qkhhDlr3J7E1jI8BpD6cJEOKiWzyBxLTKvh0pB9BAURgOEc9g800cmyeTsoM"
 );
 
 // API
@@ -17,14 +17,14 @@ app.use(cors({ origin: true }));
 app.use(express.json());
 
 // API Routes
-app.get('/', (req, res) => res.status(200).send('hello world'));
-app.post('/payments/create', async (req, res) => {
+app.get("/", (req, res) => res.status(200).send("hello world"));
+app.post("/payments/create", async (req, res) => {
   const total = req.query.total;
-  console.log('TOTAL', total);
+  console.log("TOTAL", total);
 
   const paymentIntent = await stripe.paymentIntents.create({
     amount: total,
-    currency: 'cad',
+    currency: "cad",
   });
 
   // status(201) >> OK - Created
@@ -45,3 +45,11 @@ exports.api = functions.https.onRequest(app);
 // --- Deploy Backend ---
 // In terminal, type below
 // firebase deploy --only functions
+
+// // Create and Deploy Your First Cloud Functions
+// // https://firebase.google.com/docs/functions/write-firebase-functions
+//
+// exports.helloWorld = functions.https.onRequest((request, response) => {
+//   functions.logger.info("Hello logs!", {structuredData: true});
+//   response.send("Hello from Firebase!");
+// });
