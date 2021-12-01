@@ -4,5 +4,13 @@
 @import 'mixins.scss';
 
 .orders {
-  background-color: pink;
+  // background-color: $color-white;
+  background-color: rgb(211, 210, 210);
+  padding: 2rem 8rem;
+
+  h1 {
+    margin: 3rem 0 4rem;
+    text-align: center;
+    font-size: 3rem;
+  }
 }

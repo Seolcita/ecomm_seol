@@ -19,7 +19,7 @@ app.use(express.json());
 // API Routes
 app.get('/', (req, res) => res.status(200).send('hello world'));
 app.post('/payments/create', async (req, res) => {
-  const total = Number(req.query.total).toFixed(0);
+  const total = req.query.total;
   console.log('TOTAL', total);
 
   const paymentIntent = await stripe.paymentIntents.create({
@@ -38,6 +38,10 @@ exports.api = functions.https.onRequest(app);
 
 // --- Firebase Emulator ---
 // In terminal,
-// 1. Type >> firebase emulator:start
+// 1. Type >> firebase emulators:start
 // 2. Get example end point >> ex) http://localhost:5001/ecomm-seol/us-central1/api
 // 3. Get local server(in the table) >> ex) http://localhost:4000/functions
+
+// --- Deploy Backend ---
+// In terminal, type below
+// firebase deploy --only functions

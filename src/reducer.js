@@ -5,8 +5,13 @@ export const initialState = {
   user: null,
 };
 
-export const getBasketTotal = basket =>
-  basket?.reduce((amount, item) => item.price + amount, 0);
+// export const getBasketTotal = basket =>
+//   basket?.reduce((amount, item) => item.price + amount, 0);
+
+export const getBasketTotal = basket => {
+  const total = basket?.reduce((amount, item) => item.price + amount, 0);
+  return total === 0 ? 1 : total.toFixed(0);
+};
 
 const reducer = (state, action) => {
   console.log('ACTION: ', action);
